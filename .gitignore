@@ -1,0 +1,11 @@
+# Dot files
+.DS_Store
+.env
+.idea
+
+# Build files
+node_modules/
+
+# Logs
+**/npm-debug.log
+
