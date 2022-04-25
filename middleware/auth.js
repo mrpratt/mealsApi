@@ -18,7 +18,6 @@ const verifyToken = (req, res, next) => {
     } catch (error) {
         res.status(400).send("Invalid token!!");
     }
-    // return next();
 };
 
 module.exports = verifyToken;
