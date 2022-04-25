@@ -154,7 +154,6 @@ module.exports.cancelOrder = async (req, res) => {
 
 module.exports.logout = async (req, res) => {
     try {
-
         const authHeader = req.headers["authorization"];
         jwt.sign(authHeader, "", {expiresIn: 1}, (logout, err) => {
             if (logout) {
