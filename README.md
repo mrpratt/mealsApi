@@ -2,10 +2,8 @@
 
 To **design basic CRUD operations** with ability to:
 
-- CREATE User.
-- Get User Details by id and get all user details too.
-- Update User Details.
-- Delete User Details.
+- Login/Reg User.
+- Create/Cancel Orders
 
 
 ## Quick Start
