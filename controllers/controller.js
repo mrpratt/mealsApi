@@ -9,12 +9,12 @@ module.exports.registerUser = async (req, res) => {
 
         const {name, email, password} = req.body;
         if (!(email && password && name)) {
-            res.status(400).send("All input reqd.");
+            res.status(400).send("All inputs required!!");
         }
         const oldUser = await userData.findOne({email});
 
         if (oldUser) {
-            res.status(400).send("Email already registered!!.");
+            res.status(400).send("Email already registered!!");
         }
 
         const salt = await bcrypt.genSalt(Number(process.env.SALT));
@@ -40,7 +40,7 @@ module.exports.registerUser = async (req, res) => {
         (error) {
         //duplicate key err
         if (error.code === 11000)
-            res.status(400).json({err: 'Email already exist!'});
+            res.status(400).json({err: 'Email already exists!!'});
         else
             res.status(400).json({message: error.message});
     }
@@ -51,7 +51,7 @@ module.exports.loginUser = async (req, res) => {
 
         const {email, password} = req.body;
         if (!(email && password)) {
-            res.status(400).send("All input reqd.");
+            res.status(400).send("All inputs requires!!");
         }
 
         const user = await userData.findOne({email});
@@ -87,7 +87,7 @@ module.exports.createOrder = async (req, res) => {
 
         if (orderType === 'lunch' || orderType === 'dinner') {
             if (!(orderName && orderType)) {
-                res.status(400).send("All inputs are required.");
+                res.status(400).send("All inputs are required!!");
             }
 
             const order = await orderData.create({
@@ -158,7 +158,7 @@ module.exports.logout = async (req, res) => {
         const authHeader = req.headers["authorization"];
         jwt.sign(authHeader, "", {expiresIn: 1}, (logout, err) => {
             if (logout) {
-                res.send({msg: 'You have been Logged Out'});
+                res.send({msg: 'You have been Logged Out!!'});
             } else {
                 res.send({msg: 'Error'});
             }
