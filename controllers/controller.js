@@ -81,6 +81,7 @@ module.exports.createOrder = async (req, res) => {
         let orderType = req.body.orderType.toLowerCase();
         let status = req.body.orderStatus;
         let canOrder = false;
+        let userId = req.user.user_id
 
         let current = new Date();
         let currentHour = current.getHours();
@@ -95,12 +96,13 @@ module.exports.createOrder = async (req, res) => {
                 orderType: orderType,
                 orderDate: new Date(),
                 orderStatus: status,
+                userId: userId,
             });
 
             if (orderType === 'lunch' && currentHour < 9)
                 canOrder = true;
 
-            if (orderType === 'dinner' && currentHour < 18)
+            if (orderType === 'dinner' && currentHour < 20)
                 canOrder = true;
 
             if (canOrder) {
@@ -135,7 +137,7 @@ module.exports.cancelOrder = async (req, res) => {
         if (findData.orderType === 'lunch' && currentHour < 9)
             canOrder = true;
 
-        if (findData.orderType === 'dinner' && currentHour < 18)
+        if (findData.orderType === 'dinner' && currentHour < 20)
             canOrder = true;
 
         if (canOrder) {

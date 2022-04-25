@@ -36,7 +36,10 @@ const OrderSchema = new mongoose.Schema({
     },
     orderStatus: {
         type: Number
-    }
+    },
+    userId: {
+        type: String,
+    },
 });
 
 const orderData = mongoose.model("orderData", OrderSchema);
