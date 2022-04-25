@@ -102,7 +102,7 @@ module.exports.createOrder = async (req, res) => {
             if (orderType === 'lunch' && currentHour < 9)
                 canOrder = true;
 
-            if (orderType === 'dinner' && currentHour < 20)
+            if (orderType === 'dinner' && currentHour < 18)
                 canOrder = true;
 
             if (canOrder) {
@@ -137,7 +137,7 @@ module.exports.cancelOrder = async (req, res) => {
         if (findData.orderType === 'lunch' && currentHour < 9)
             canOrder = true;
 
-        if (findData.orderType === 'dinner' && currentHour < 20)
+        if (findData.orderType === 'dinner' && currentHour < 18)
             canOrder = true;
 
         if (canOrder) {
